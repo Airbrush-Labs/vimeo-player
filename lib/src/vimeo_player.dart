@@ -91,7 +91,7 @@ class _VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
   /// used to notify quality files
   ValueNotifier<List<VimeoVideoFile>> files = ValueNotifier([]);
 
-  /// the current link of the vedio
+  /// the current link of the video
   String currentLink = '';
   void updateCurrentLink(String newValue) {
     setState(() {
@@ -292,8 +292,11 @@ class _VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
         // Check if there are at least 2 valid links
         if (link == '') {
           if (validLinks.isNotEmpty) {
-            //TODO: support other resolutions too
-            currentLink = validLinks[0]; // Get the first valid link
+            // default to 1080p (hd) video (all URLs contain a rendition eg. .../rendition/1080p/file..)
+            currentLink = validLinks.firstWhere(
+              (element) => element.contains('1080p'),
+              orElse: () => validLinks[0],
+            );
           } else {
             showAlertDialog(context);
             return;
