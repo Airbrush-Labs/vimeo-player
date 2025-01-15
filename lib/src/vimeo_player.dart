@@ -61,7 +61,7 @@ class VimeoVideoPlayer extends StatefulWidget {
     this.startAt,
     this.onProgress,
     this.onFinished,
-    this.autoPlay = false,
+    this.autoPlay = true,
     this.dioOptionsForVimeoVideoConfig,
     required this.token,
     required this.startMuted,
@@ -324,7 +324,7 @@ class _VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
         // ignore: use_build_context_synchronously
       )..registerContext(context);
 
-      if (widget.startMuted) _flickManager?.flickControlManager?.mute();
+      // if (widget.startMuted) _flickManager?.flickControlManager?.mute();
 
       isVimeoVideoLoaded.value = !isVimeoVideoLoaded.value;
     });
