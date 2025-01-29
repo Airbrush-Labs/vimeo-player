@@ -324,7 +324,7 @@ class _VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
         // ignore: use_build_context_synchronously
       )..registerContext(context);
 
-      if (widget.startMuted) _flickManager?.flickControlManager?.mute();
+      // if (widget.startMuted) _flickManager?.flickControlManager?.mute();
 
       isVimeoVideoLoaded.value = !isVimeoVideoLoaded.value;
     });
